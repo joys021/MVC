@@ -1,34 +1,324 @@
-﻿@{
-    ViewData["Title"] = "Index";
+
+@{
+    ViewData["Title"] = "Go Camping | Welcome to Home Page ";
 }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Go Camping">
+    <meta name="keywords" content="Go Camping">
+    <meta name="author" content="karan reddy">
+    <title> </title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
 
-<h2>National Parks</h2>
-<hr />
+        body {
+            font: 15px;
+            font-family: Dosis,"Helvetica Neue",Arial,Helvetica,sans-serif;
+            margin-top: 5%;
+            padding: 0%;
+            background-color: whitesmoke;
+        }
 
-<div>
-    <p>
-        This application let's you fetch data from National Park Service via their public <a href="https://www.nps.gov/subjects/developer/api-documentation.htm#/" target="_blank">API</a>.
-        <br />
-        <br />
-        In order to use this application, all you need to do is get the API key from this <a href="https://api.data.gov/signup/" target="_blank">page</a>. Signup using your usf mail, the api key will be sent to you through email. Copy the key and paste it on line no 15 in APIHandlerManager/APIHandler.cs and re run the application.
-        <br />
-        <br />
-        The <a asp-area="" asp-controller="Home" asp-action="Parks">Parks</a> tab fetches parks data from the
-        <a href="https://developer.nps.gov/">National Park Service API </a> and displays the results.
-        <br />
-        <br />
-        The <a asp-area="" asp-controller="Home" asp-action="Campgrounds">Campgrounds</a> tab fetches campgrounds data from the
-        <a href="https://developer.nps.gov/">National Park Service API </a> and displays the results.
-        <br />
-        <br />
+        .container {
+            margin: auto;
+            padding-right: 0;
+            overflow: hidden;
+        }
 
-    </p>
+        #main {
+            min-height: 400px;
+            width: 100%;
+            background: url("https://swagpix.com/system/photos/resources/000/005/412/show/dawn-landscape-mountains-nature.jpg?1455776081") no-repeat 0 -150px;
+            background-size: 100%;
+            opacity: .95;
+            color: black;
+        }
 
-    <p>
-        Following learning objectives are fulfilled -
-        <ul>
-            <li>Connection to REST API using API key.</li>
-            <li>Consuming the data from the REST API.</li>
-        </ul>
-    </p>
-</div>
+        #mainone {
+            margin-top: 3%;
+            margin-left: 2%;
+            padding: 0;
+            color: whitesmoke;
+        }
+
+            #mainone h2 {
+                font-size: 400%;
+            }
+
+            #mainone p {
+                font-size: 100%;
+                padding: 1%;
+                margin-top: 18%;
+            }
+
+        #main h1 {
+            font-size: 35px;
+            margin-bottom: 0px;
+        }
+
+        #subscribe {
+            background: #35424a;
+            color: #ffffff;
+            padding: 8px;
+            margin-top: 3%;
+        }
+
+
+            #subscribe h1 {
+                float: left;
+            }
+
+            #subscribe form {
+                padding-top: 16px;
+                padding-left: 66%
+            }
+
+            #subscribe input[type="email"] {
+                padding: 18px;
+                height: 25px;
+                width: 250px;
+            }
+
+            #subscribe button[type="submit"] {
+                height: 39px;
+                padding: 0 15px 0 15px;
+                font-size: 15px;
+                background-color: #e8491d;
+                color: #ffffff;
+                border: none;
+                margin-right: 2%;
+            }
+
+        footer {
+            background: #e8491d;
+            color: #ffffff;
+            padding: 8px;
+            margin-top: 1%;
+            margin-bottom: 0.5%;
+            text-align: center;
+        }
+
+        .backgroundfortext {
+            background-color: black;
+            width: 96%;
+            border-radius: 10px;
+        }
+
+        .sub-heading {
+            padding: 8px;
+            background: #35424a;
+            border-radius: 5px;
+            width: 1155.5px;
+            margin-top: 2%;
+            color: whitesmoke;
+        }
+
+        .descreption {
+            font-size: 1.75rem;
+            width: 98%;
+            margin: 1%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-family:Comic Sans MS"><span style="color:#e8491d;">Go Camping</span> & Bring Home a Story. </h1>
+    <hr />
+    <section id="main">
+        <div class="container">
+            <div id="mainone">
+
+                <h2>Find Your Next Adventure !</h2>
+                <p class="backgroundfortext">
+                    We're here to help you dream up your next camp, figure out the details and experience at over 100+ facilities and 500+ individual sites across the country. There's something for everyone on GoCamping.com, so get out there, experience America, and bring home a story! <br />
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="container">
+        <div class="row">
+            <p class="sub-heading">Camping Grounds</p>
+            <p class="descreption">
+                It is all here, on one map and at your fingertips:  All 200+ Florida public campgrounds, with accurate details for your camping plans, campground amenities, phone numbers and web links for both the campground itself and parks that you wish to camp in. Includes all National Park, National Forest, State Park and Provincial campgrounds. Most regional, county, city and utility-owned are also included.
+            </p>
+            <div class="col-lg-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022__340.jpg">
+                </div>
+                <p>
+                    Devils Garden Campground
+                </p>
+                <p>Camp among slickrock outrcoppings at Devils Garden Campground, 18 miles from the park entrance. You can reserve standard campsites up to 6 months in advance for stays March 1-October 31.</p>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://cdn.pixabay.com/photo/2017/07/31/21/55/people-2561455__340.jpg">
+                </div>
+                <p>
+                    Bandy Creek Campground
+                </p>
+                <p>
+                    The campground offers a total of 181 campsites: 96 trailer sites which offer water and electric hook-ups, 49 sites for tent camping, and two group camping loops with 19 sites in one loop and 16 sites in the other. All campsites include picnic tables, fire rings, and access to restrooms and showers.
+                </p>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://cdn.pixabay.com/photo/2016/09/05/12/48/camping-1646504__340.jpg">
+                </div>
+                <p>
+                    Mazama Village Campground
+                </p>
+                <p>Mazama Village Campground is located seven miles from the rim of Crater Lake. The campground is mostly forested and each site has a picnic table, fire ring, and bear locker. 75% of the sites are are reservable in advance and the rest are available on a first-come, first-served basis.</p>
+            </div>
+
+            <p class="descreption">
+                Want to know more about the campgrounds? Click on  <a asp-area="" asp-controller="Home" asp-action="Campgrounds">Campgrounds.</a>
+
+            </p>
+        </div>
+        <div class="row">
+            <p class="sub-heading">Best parks to Explore</p>
+            <p class="descreption">Discover our most treasured places, supported by people like you, and start your Camping plans here. Below are some of the popular parks people liked and rated the best</p>
+            <div class="col-lg-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://cdn.pixabay.com/photo/2016/01/19/15/11/camp-fire-1149184__340.jpg">
+                </div>
+                <p>
+                    Belmont-Paul Women's Equality National Monument
+                </p>
+                <p>Home to the National Woman's Party for nearly 90 years, this was the epicenter of the struggle for women's rights. From this house in the shadow of the U.S. Capitol and Supreme Court, Alice Paul and the NWP developed innovative strategies and tactics to advocate for the Equal Rights Amendment and equality for women. </p>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://cdn.pixabay.com/photo/2017/02/14/08/51/wintry-2065342__340.jpg">
+                </div>
+                <p>
+                    Bryce Canyon National Park
+                </p>
+                <p>Hoodoos (irregular columns of rock) exist on every continent, but here is the largest concentration found anywhere on Earth. Situated along a high plateau at the top of the Grand Staircase, the park's high elevations include numerous life communities, fantastic dark skies, and geological wonders that defy description.</p>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://making-the-web.com/sites/default/files/styles/225x120/public/clipart/147624/camping-images-free-147624-1862104.jpg?itok=QnF68pyX">
+                </div>
+                <p>
+                    Cuyahoga Valley National Park
+                </p>
+                <p>Though a short distance from the urban areas of Cleveland and Akron, Cuyahoga Valley National Park seems worlds away. The park is a refuge for native plants and wildlife, and provides routes of discovery for visitors.</p>
+            </div>
+        </div>
+        <p class="descreption">Want to learn more about parks? please click on  <a asp-area="" asp-controller="Home" asp-action="Parks">Parks.</a></p>
+        <canvas id="myChart" width="1600" height="900"></canvas>
+    </section>
+    <section id="subscribe">
+        <div class="container">
+            <h1>Subscribe To Our Newsletter</h1>
+            <form action="submit">
+                <input type="email" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>Go Camping, Copyright &copy; 2019</p>
+    </footer>
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopChart = new Chart(myChart, {
+            type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: ['Devils Garden Campground', 'Bandy Creek Campground', 'No developed campgrounds in the preserve', 'Mazama Village Campground','Lost Creek Campground','Savage River','Igloo Creek','Wonder Lake','Rivers Bend Group Campground','Bartlett Cove Campground','Gros Ventre Campground','Brooks Camp Campground','Exit Glacier Campground','Dyea Campground','Rock Creek Campground', 'Malaquite Campground','Bird Island Basin Campground','South Fork Campground' ,'Chase County Lake','Kendesnii Campground'],
+                datasets: [{
+                    label: 'Total Sites',
+                    data: [
+                        28,
+                        60,
+                        33,
+                        11,
+                        149,
+                        7,
+                        300,
+                        51,
+                        12,
+                        0,
+                        48,
+                        34,
+                        0,
+                        0,
+                        22,
+                        10,
+                        32,
+                        10,
+                        214,
+                        16
+                    ],
+                    //backgroundColor:'green',
+                    backgroundColor: [
+                        'rgba(255, 99, 122, 0.6)',
+                        'rgba(54, 162, 245, 0.6)',
+                        'rgba(255, 206, 586, 0.6)',
+                        'rgba(75, 192, 692, 0.6)',
+                        'rgba(153, 102, 855, 0.6)',
+                        'rgba(255, 153, 64, 0.6)',
+                        'rgba(255, 100, 132, 0.6)',
+                        'rgba(255, 99, 12, 0.6)',
+                        'rgba(54, 162, 25, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 62, 0.6)',
+                        'rgba(153, 102, 55, 0.6)',
+                        'rgba(255, 153, 4, 0.6)',
+                        'rgba(255, 100, 32, 0.6)',
+                             'rgba(25, 99, 12, 0.6)',
+                        'rgba(54, 16, 25, 0.6)',
+                        'rgba(255, 06, 86, 0.6)',
+                        'rgba(75, 92, 62, 0.6)',
+                        'rgba(13, 102, 55, 0.6)',
+                        'rgba(25, 153, 4, 0.6)',
+                        'rgba(25, 100, 32, 0.6)'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Total number of campsites in campgrounds',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
+    </script>
+</body>
