@@ -1,6 +1,124 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+@{
+    ViewData["Title"] = "About Us";
 }
-<h2>@ViewData["Title"]</h2>
+<head>
+    <style>
 
-<p>Use this page to detail your site's privacy policy.</p>
+        body {
+            font: 15px;
+            font-family: Dosis,"Helvetica Neue",Arial,Helvetica,sans-serif;
+            margin-top: 5%;
+            padding: 0%;
+            background-color: whitesmoke;
+        }
+
+        h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+        }
+
+        .divclass {
+            border: 15px solid rgba(158, 151, 151, 0.479);
+            width: 80%;
+            padding: 2%;
+            margin: 20px auto;
+            font-family: source sans pro;
+        }
+
+        .para {
+            border-left: 5px solid rgba(158, 151, 151, 0.479);
+            padding: 5px;
+            text-align: left;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient( to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) );
+        }
+
+        .about_ref {
+            float: left;
+            color: #44b175;
+            font-size:2rem;
+            margin:2%;
+        }
+        .divclass h1{
+            color:black;
+            font-size:2rem;
+        }
+        footer {
+            background: #e8491d;
+            color: #ffffff;
+            padding: 8px;
+            margin-top: 1%;
+            margin-bottom: 0.5%;
+            text-align: center;
+        }
+
+        .aboutimage {
+            width: 10%;
+            float: left;
+            margin: 0 2%;
+            border: 1px solid rgba(146, 141, 141, 0.479);
+            max-width: 12%;
+            position: relative;
+            padding: 1px;
+        }
+
+        .dataimage {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="font-family:Comic Sans MS; margin-bottom:30px;"><span style="color:#e8491d;">About</span> Us</h2>
+    <hr />
+    <div class="divclass">
+        <div class="line">
+            <h4>SRI KARAN REDDY PRODDUTURI</h4>
+            <img class="aboutimage" src="~/images/karan.png" />
+            <p class="para">
+                I'm Karan Reddy, persuing masters in Business analytics and
+                Information systems .I have always been fascinated about the web
+                technologies which is why I liked this course. My contribution to this
+                assignment has been with html and css code in About page. Also helped
+                the team with designing logical data model for the database.
+            </p>
+            <hr />
+        </div>
+        <div class="line">
+            <h4>JOYCE PRIYANKA DAVID</h4>
+            <img class="aboutimage" src="~/images/joyce.png" />
+            <p class="para">
+                I am Joyce Priyanka David, studying Masters in Business Analytics and
+                Information Systems. My Interests are in Cloud, BigData and DevOps. I
+                assisted in designing the webpage for "passes". And suggested in
+                organizing the contents of the page and in designing the logical data
+                model.
+            </p>
+            <hr />
+        </div>
+        <div class="line">
+            <h4>ISHAN PANDE</h4>
+            <img class="aboutimage" src="~/images/ishaan.jpeg" />
+            <p class="para">
+                My areas of interest include Statistical Data mining and creating
+                regression models. I also like to create data visualisations. I helped
+                in creating the signup/login page as well as embedding the Google maps
+                API with a custom map that I created for Checkout/Return Kiosks.
+            </p>
+        </div>
+
+
+    </div>
+    <div class="divclass">
+        <h4>Logical Data Model</h4>
+        <img class="dataimage" src="~/images/Logical_data_model.png" />
+        
+            <h1>Project Link to Git Repository :<a href="https://github.com/joys021/MVC"> Github</a></h1>
+        
+    </div>
+</body>
