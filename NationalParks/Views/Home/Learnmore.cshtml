@@ -1,0 +1,113 @@
+
+@model NationalParks.Models.master
+<head>
+    <style>
+
+        body {
+            font: 15px;
+            font-family: Dosis,"Helvetica Neue",Arial,Helvetica,sans-serif;
+            margin-top: 5%;
+            padding: 0%;
+            background-color: whitesmoke;
+        }
+
+        .border:nth-child(2n) {
+            background: #35424a;
+            color: whitesmoke;
+            padding: 1% 2% 3% 2%;
+        }
+
+        h3 {
+            text-decoration: underline;
+            text-underline-position: under;
+            padding-bottom: 1%;
+            border-radius: 6px;
+        }
+
+        h2 {
+            text-decoration: underline;
+            text-underline-position: under;
+            padding-bottom: 1%;
+            border-radius: 6px;
+        }
+
+        .section {
+            padding-left: 2%;
+            width: 70%;
+        }
+
+        .sectiontwo {
+            float: right;
+        }
+
+        a {
+            color: #e8491d;
+        }
+
+            a:hover {
+                color: #62b5e9;
+                text-decoration: none;
+            }
+
+        
+        p {
+            padding-left: 3%
+        }
+
+        #main {
+            float: left;
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="font-family:Comic Sans MS"><span style="color:#e8491d;">All </span> details</h1>
+    <div id="main">
+        <h2>
+            @Html.DisplayFor(model => model.data.name)
+        </h2>
+        <div>
+            <div class="section">
+                <h4>Basic Descreption</h4>
+                <p>@Html.DisplayFor(model => model.data.description)</p>
+                <h4>Accessibility Information</h4>
+                <p>@Html.DisplayFor(model => model.accessibility.additionalinfo)</p>
+               
+                <p>Wheelchair Access- @Html.DisplayFor(model => model.accessibility.wheelchairaccess)</p>
+                <p>Internet Info- @Html.DisplayFor(model => model.accessibility.internetinfo)</p>
+               
+                <p>RV Allowed- @Html.DisplayFor(model => model.accessibility.rvallowed)</p>
+                <p>Cell Phone Info- @Html.DisplayFor(model => model.accessibility.cellphoneinfo)</p>
+                <p>Fire Stove Policy- @Html.DisplayFor(model => model.accessibility.firestovepolicy)</p>
+                <p>Rv Maxlength- @Html.DisplayFor(model => model.accessibility.rvmaxlength)</p>
+                <p>trailer maxlength- @Html.DisplayFor(model => model.accessibility.trailermaxlength)</p>
+                <p>Ada info- @Html.DisplayFor(model => model.accessibility.adainfo)</p>
+                <p>Trailerallowed- @Html.DisplayFor(model => model.accessibility.trailerallowed)</p>
+
+                <h4>Weather Overview</h4>
+                <p>@Html.DisplayFor(model => model.data.weatheroverview)</p>
+
+                <h4>Directions</h4>
+                <p>@Html.DisplayFor(model => model.data.directionsoverview)</p>
+
+            </div>
+
+            <h4>TOTAL SITES: @Html.DisplayFor(model => model.campsites.totalsites)</h4>
+            <p>
+                Electric Hookups:  @Html.DisplayFor(model => model.campsites.electricalhookups),<br /> RV only
+                @Html.DisplayFor(model => model.campsites.rvonly)<br /> Cellphone Info: @Html.DisplayFor(model => model.accessibility.cellphoneinfo)<br />
+                Tent Only:  @Html.DisplayFor(model => model.campsites.tentonly)
+            </p>
+
+            <a src="@Html.DisplayFor(model => model.data.reservationsurl)">Click to make a reservation</a>
+
+        </div>
+        
+
+    </div>
+
+</body>
+
+
+
