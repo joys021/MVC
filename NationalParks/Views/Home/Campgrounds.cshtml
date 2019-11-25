@@ -1,29 +1,67 @@
 @model NationalParks.Models.RootObject
 
-<h1>Campgrounds</h1>
-<hr />
+<head>
+    <style>
+        body {
+            font: 15px;
+            font-family: Dosis,"Helvetica Neue",Arial,Helvetica,sans-serif;
+            margin-top: 5%;
+            padding: 0%;
+            background-color: whitesmoke;
+        }
 
-@foreach (var item in Model.data)
-{
-<div>
-    <h3>
-        @Html.DisplayFor(modelItem => item.name)
-    </h3>
-    <div>
-        @Html.DisplayFor(modelItem => item.description)
+        .border:nth-child(2n) {
+            background: #35424a;
+            color: whitesmoke;
+            padding: 1% 2% 3% 2%;
+        }
 
-    </div>
-    <a href="@item.directionsUrl" target="_blank">
-        @Html.DisplayFor(modelItem => item.directionsUrl)
-    </a>
-    <div>
-        <h5>Weather overview: </h5>
-        @Html.DisplayFor(modelItem => item.weatheroverview)
-    </div>
-</div>
-<br />
-}
+        h3 {
+            text-decoration: underline;
+            text-underline-position: under;
+            padding-bottom: 1%;
+            border-radius: 6px;
+        }
 
-<script>
+        a {
+            color: #e8491d;
+        }
+
+            a:hover {
+                color: #62b5e9;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <h1 style="font-family:Comic Sans MS"><span style="color:#e8491d;">Campgrounds </span>& it's details</h1>
+    <hr />
+
+    @foreach (var item in Model.data)
+    {
+        <div class="border">
+            <h3>
+                @Html.DisplayFor(modelItem => item.name)
+            </h3>
+            <div>
+                @Html.DisplayFor(modelItem => item.description)
+
+            </div>
+            <a href="@item.directionsUrl" target="_blank">
+                @Html.DisplayFor(modelItem => item.directionsUrl)
+            </a>
+            <div>
+                <h4>Weather overview: </h4>
+                @Html.DisplayFor(modelItem => item.weatheroverview)
+            </div>
+            <div>
+                @Html.ActionLink("Learn more", "Learnmore", new { id = item.id })
+            </div>
+        </div>
+        <br />
+    }
+
+    <script>
     alertDbSave(@ViewBag.dbSuccessComp);
-</script>
+    </script>
+</body>
