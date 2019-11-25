@@ -1,28 +1,64 @@
-﻿@model NationalParks.Models.Parks
+@model NationalParks.Models.Parks
 
-<h1>Parks</h1>
-<hr />
+<head>
+    <style>
 
-@foreach (var item in Model.data)
-{
-<div>
-    <h3>
-        @Html.DisplayFor(modelItem => item.fullName)
-    </h3>
-    <div>
-        @Html.DisplayFor(modelItem => item.description)
-    </div>
-    <a href="@item.url" target="_blank">
-        @Html.DisplayFor(modelItem => item.url)
-    </a>
-    <div>
-        <h5>Directions: </h5>
-        @Html.DisplayFor(modelItem => item.directionsInfo)
-    </div>
-</div>
-<br/>
-}
+        body {
+            font: 15px;
+            font-family: Dosis,"Helvetica Neue",Arial,Helvetica,sans-serif;
+            margin-top: 5%;
+            padding: 0%;
+            background-color: whitesmoke;
+        }
 
-<script>
+        .border:nth-child(2n) {
+            background: #35424a;
+            color: whitesmoke;
+            padding: 1% 2% 3% 2%;
+        }
+
+        h3 {
+            text-decoration: underline;
+            text-underline-position: under;
+            padding-bottom: 1%;
+            border-radius: 6px;
+        }
+
+        a {
+            color: #e8491d;
+        }
+
+            a:hover {
+                color: #62b5e9;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <h1 style="font-family:Comic Sans MS"><span style="color:#e8491d;">Parks </span>& it's details</h1>
+    <hr />
+
+    @foreach (var item in Model.data)
+    {
+        <div>
+            <h3>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </h3>
+            <div>
+                @Html.DisplayFor(modelItem => item.description)
+            </div>
+            <a href="@item.url" target="_blank">
+                @Html.DisplayFor(modelItem => item.url)
+            </a>
+            <div>
+                <h5>Directions: </h5>
+                @Html.DisplayFor(modelItem => item.directionsInfo)
+            </div>
+        </div>
+        <br />
+    }
+
+    <script>
     alertDbSave(@ViewBag.dbSuccessComp);
-</script>
+    </script>
+</body>
