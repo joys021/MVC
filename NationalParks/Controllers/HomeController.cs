@@ -1,78 +1,108 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using NationalParks.Models;
-using NationalParks.APIHandlerManager;
-using NationalParks.DataAccess;
-using Newtonsoft.Json;
 using System.Net.Http;
-using Microsoft.EntityFrameworkCore;
-namespace NationalParks.Controllers
+using Newtonsoft.Json;
+using NationalParks.Models;
+
+namespace NationalParks.APIHandlerManager
 {
-    public class HomeController : Controller
+  public class APIHandler
+  {
+    // Obtaining the API key is easy. The same key should be usable across the entire
+    // data.gov developer network, i.e. all data sources on data.gov.
+    // https://www.nps.gov/subjects/developer/get-started.htm
+
+    static string BASE_URL = "https://developer.nps.gov/api/v1/";
+    static string API_KEY = "Md5PA0TmHIxgTbv0rewNGyiM62eVyhKNX9vGvBvE"; //Add your API key here inside ""
+
+    HttpClient httpClient;
+
+    /// <summary>
+    ///  Constructor to initialize the connection to the data source
+    /// </summary>
+    public APIHandler()
     {
-         public ApplicationDbContext dbContext;
+      httpClient = new HttpClient();
+      httpClient.DefaultRequestHeaders.Accept.Clear();
+      httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
+      httpClient.DefaultRequestHeaders.Accept.Add(
+          new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+    }
 
-         public HomeController(ApplicationDbContext context)
-         {
-            dbContext = context;         
-         }
+    /// <summary>
+    /// Method to receive data from API end point as a collection of objects
+    /// 
+    /// JsonConvert parses the JSON string into classes
+    /// </summary>
+    /// <returns></returns>
+    public Parks GetParks()
+    {
+      string NATIONAL_PARK_API_PATH = BASE_URL + "/parks?limit=20";
+      string parksData = "";
+       
+      Parks parks = null;
 
-        public IActionResult Index()
+      httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
+
+      // It can take a few requests to get back a prompt response, if the API has not received
+      //  calls in the recent past and the server has put the service on hibernation
+      try
+      {
+        HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH).GetAwaiter().GetResult();
+        if (response.IsSuccessStatusCode)
         {
-            return View();
+          parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
 
-        public IActionResult Parks()
+        if (!parksData.Equals(""))
         {
-            APIHandler webHandler = new APIHandler();
-            Parks parks = webHandler.GetParks();
-            foreach (Park park in parks.data)
+          // JsonConvert is part of the NewtonSoft.Json Nuget package
+          parks = JsonConvert.DeserializeObject<Parks>(parksData);
+        }
+      }
+      catch (Exception e)
+      {
+        // This is a useful place to insert a breakpoint and observe the error message
+        Console.WriteLine(e.Message);
+      }
+
+      return parks;
+    }
+        public RootObject GetCampgrounds()
+        {
+            string NATIONAL_PARK_API_PATH = BASE_URL + "/campgrounds?limit=20";
+            string parksData = "";
+
+            RootObject parks = null;
+
+            httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
+
+            // It can take a few requests to get back a prompt response, if the API has not received
+            //  calls in the recent past and the server has put the service on hibernation
+            try
             {
-                //Database will give PK constraint violation error when trying to insert record with existing PK.
-                //So add company only if it doesnt exist, check existence using symbol (PK)
-                if (dbContext.Parks.Where(p => p.id.Equals(park.id)).Count() == 0)
+                HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH).GetAwaiter().GetResult();
+                if (response.IsSuccessStatusCode)
                 {
-                    dbContext.Parks.Add(park);
+                    parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                }
+
+                if (!parksData.Equals(""))
+                {
+                    // JsonConvert is part of the NewtonSoft.Json Nuget package
+                    parks = JsonConvert.DeserializeObject<RootObject>(parksData);
                 }
             }
-
-            dbContext.SaveChanges();
-            
-            return View(parks);
-        }
-
-        public IActionResult Campgrounds()
-        {
-            APIHandler webHandler = new APIHandler();
-            RootObject dat = webHandler.GetCampgrounds();
-            foreach (Datum data in dat.data)
+            catch (Exception e)
             {
-                //Database will give PK constraint violation error when trying to insert record with existing PK.
-                //So add company only if it doesnt exist, check existence using symbol (PK)
-                if (dbContext.RootObject.Where(p => p.parkCode.Equals(data.parkCode)).Count() == 0)
-                {
-                    dbContext.RootObject.Add(data);
-                }
+                // This is a useful place to insert a breakpoint and observe the error message
+                Console.WriteLine(e.Message);
             }
 
-            dbContext.SaveChanges();
-
-            return View(dat);
+            return parks;
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
