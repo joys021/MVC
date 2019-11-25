@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -52,6 +53,30 @@ namespace NationalParks.Models
         public string walkboatto { get; set; }
     }
 
+    public class Amenities
+    {
+        [ForeignKey("Datum")]
+
+        public string id { get; set; }
+        public Datum Datum { get; set; }
+        public string trashrecyclingcollection { get; set; }
+        
+        public string internetconnectivity { get; set; }
+        
+        public string cellphonereception { get; set; }
+        public string laundry { get; set; }
+        public string amphitheater { get; set; }
+        public string dumpstation { get; set; }
+        public string campstore { get; set; }
+        public string stafforvolunteerhostonsite { get; set; }
+       
+        public string iceavailableforsale { get; set; }
+        public string firewoodforsale { get; set; }
+        public string ampitheater { get; set; }
+        public string foodstoragelockers { get; set; }
+    }
+
+
     public class Accessibility
     {
         [ForeignKey("Datum")]
@@ -80,6 +105,7 @@ namespace NationalParks.Models
         public string weatheroverview { get; set; }
         public Campsites campsites { get; set; }
         public Accessibility accessibility { get; set; }
+        public Amenities Amenities { get; set; }
         public string directionsoverview { get; set; }
         public string reservationsurl { get; set; }
         public string directionsUrl { get; set; }
@@ -104,6 +130,15 @@ namespace NationalParks.Models
         public string start { get; set; }
     }
 
+    public class master
+    {
+       
+        public Datum data { get; set; }
+        public Campsites campsites { get; set; }
+        public Accessibility accessibility { get; set; }
+        public Amenities Amenities { get; set; }
+    }
 
+    
 
 }
